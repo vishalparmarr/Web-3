@@ -41,10 +41,10 @@
  * https://trufflesuite.com/docs/truffle/getting-started/using-the-truffle-dashboard/
  */
 
-// require('dotenv').config();
-// const { MNEMONIC, PROJECT_ID } = process.env;
+require('dotenv').config();
+const { MNEMONIC, PROJECT_ID } = process.env;
 
-// const HDWalletProvider = require('@truffle/hdwallet-provider');
+const HDWalletProvider = require('@truffle/hdwallet-provider');
 
 module.exports = {
   /**
@@ -57,23 +57,34 @@ module.exports = {
    * $ truffle test --network <network-name>
    */
 
-  networks: {
-    development: {
-     host: "127.0.0.1",     
-     port: 7545,            
-     network_id: "*",       
-    }
-},
+//   networks: {
+//     development: {
+//      host: "127.0.0.1",     
+//      port: 7545,            
+//      network_id: "*",       
+//     }
+// },
 
   // Set default mocha options here, use special reporters, etc.
   mocha: {
     // timeout: 100000
   },
 
+  sepolia: {
+    provider: () =>
+     new HDWalletProvider (
+      MNEMONIC,
+      `https://eth-sepolia.g.alchemy.com/v2/${PROJECT_ID}`
+      ),
+      network_id: 1,
+      // confirmations:2,
+      // timeoutBlocks: 200,
+      // skipDryRun: true,
+  },
   // Configure your compilers
   compilers: {
     solc: {
-      version: "0.8.21",      // Fetch exact version from solc-bin (default: truffle's version)
+      version: "0.8.13",      // Fetch exact version from solc-bin (default: truffle's version)
       // docker: true,        // Use "0.5.1" you've installed locally with docker (default: false)
       // settings: {          // See the solidity docs for advice about optimization and evmVersion
       //  optimizer: {

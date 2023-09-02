@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "@truffle/hdwallet-provider": "^2.1.14",
+    "alchemy-sdk": "^2.10.0",
+    "dotenv": "^16.3.1"
+  }
+}
