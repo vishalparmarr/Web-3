@@ -41,12 +41,12 @@
  * https://trufflesuite.com/docs/truffle/getting-started/using-the-truffle-dashboard/
  */
 
-require("dotenv").config();
-const { INFURA_API_KEY, MNEMONIC } = process.env;
+// require("dotenv").config();
+// const { INFURA_API_KEY, MNEMONIC } = process.env;
 
-const HDWalletProvider = require("@truffle/hdwallet-provider");
+// const HDWalletProvider = require("@truffle/hdwallet-provider");
 
-module.exports = {
+// module.exports = {
   /**
    * Networks define how you connect to your ethereum client and let you set the
    * defaults web3 uses to send transactions. If you don't specify one truffle
@@ -57,25 +57,18 @@ module.exports = {
    * $ truffle test --network <network-name>
    */
 
-  networks: {
+ 
     // Useful for testing. The `development` name is special - truffle uses it by default
     // if it's defined here and no other network is specified at the command line.
     // You should run a client (like ganache, geth, or parity) in a separate terminal
     // tab if you use this network and you must also set the `host`, `port` and `network_id`
     // options below to some value.
     //
-     development: {
-      host: "127.0.0.1",     // Localhost (default: none)
-      port: 8545,            // Standard Ethereum port (default: none)
-      network_id: "*",       // Any network (default: none)
-     },
-     sepolia: {
-      provider: () => new HDWalletProvider(MNEMONIC, INFURA_API_KEY),
-      network_id: "11155111",
-      gas: 4465030,
-      networkCheckTimeout: 10000,
-      timeoutBlocks: 200
-    },
+    //  development: {
+    //   host: "127.0.0.1",     // Localhost (default: none)
+    //   port: 8545,            // Standard Ethereum port (default: none)
+    //   network_id: "*",       // Any network (default: none)
+    //  },
     //
     // An additional network, but with some advanced options…
     // advanced: {
@@ -103,8 +96,23 @@ module.exports = {
     //   network_id: 2111,   // This network is yours, in the cloud.
     //   production: true    // Treats this network as if it was a public net. (default: false)
     // }
-  },
+require("dotenv").config();
+const HDWalletProvider = require("@truffle/hdwallet-provider");
+const {MNEMONIC } = process.env;
 
+module.exports = {
+  networks: {
+    development: {
+      host: "127.0.0.1",
+      port: 8545,
+      network_id: "*",
+    },
+    sepolia: {
+      provider: () => new HDWalletProvider(MNEMONIC, `wss://eth-sepolia.g.alchemy.com/v2/mzbfwsNPtjKxjPQWSx08y5MHR9Z4fG7a`),
+      network_id: "11155111",
+      // gas: 4465030,
+    },
+  },
   // Set default mocha options here, use special reporters, etc.
   mocha: {
     // timeout: 100000
