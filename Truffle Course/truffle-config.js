@@ -98,7 +98,6 @@
     // }
 require("dotenv").config();
 const HDWalletProvider = require("@truffle/hdwallet-provider");
-const {MNEMONIC } = process.env;
 
 module.exports = {
   networks: {
@@ -108,7 +107,7 @@ module.exports = {
       network_id: "*",
     },
     sepolia: {
-      provider: () => new HDWalletProvider(MNEMONIC, `wss://eth-sepolia.g.alchemy.com/v2/mzbfwsNPtjKxjPQWSx08y5MHR9Z4fG7a`),
+      provider: () => new HDWalletProvider(process.env.MNEMONIC, process.env.INFURA_API_KEY),
       network_id: "11155111",
       // gas: 4465030,
     },
