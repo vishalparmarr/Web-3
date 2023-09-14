@@ -1,0 +1,20 @@
+{
+  "name": "web3",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "fs": "^0.0.1-security",
+    "ganache-cli": "^6.12.2",
+    "solc": "^0.8.21",
+    "web3": "^1.10.2",
+    "web3.js-browser": "^0.2.0"
+  },
+  "description": ""
+}
